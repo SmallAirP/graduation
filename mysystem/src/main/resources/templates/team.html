@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" question="IE=edge">
+<meta name="viewport" question="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" question="width=device-width, initial-scale=1">
+<meta name="viewport" question="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>Team</title>
+<meta name="keywords" question="">
+<meta name="description" question="">
+<meta name="author" question="">
+
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<!-- Responsive-->
+<link rel="stylesheet" th:href="@{/css/responsive.css}">
+<!-- fevicon -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" th:href="@{/images/fevicon.png}">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" th:href="@{/css/jquery.mCustomScrollbar.min.css}">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- owl stylesheets -->
+<link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+<link rel="stylesheet" href="css/owl.theme.default.min.css" th:href="@{/css/owl.theme.default.min.css}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body>
+  <!--header section start -->
+    <div class="header_section header_bg">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="logo">
+            <a href="index.html" th:href="@{/index.html}">
+              <img src="images/logo.png" th:src="@{/images/logo.png}">
+            </a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/index.html}">首页</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/services.html}">服务</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/content}">社区论坛</a>
+
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/team.html}">社区居委会成员</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/contact.html}">意见反馈</a>
+              </li>
+              <li class="nav-item" th:if="${session.isT} ne 'y'">
+                <a class="nav-link" th:href="@{/login.html}" >登录/注册</a>
+              </li>
+              <li class="nav-item" th:if="${session.isT} eq 'y'">
+
+                <!--                <span th:text="${session.loginuser}"></span>-->
+                <!--                <span>欢迎你！</span>-->
+                <!--                <a class="nav-link" href="#" th:href="@{/xx}" >退出登录</a>-->
+                <a class="nav-link" href="#" th:href="@{/person.html}" >个人中心</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+    <!--header section end -->
+    <!--team section start -->
+    <div class="team_section layout_padding">
+      <div class="container">
+        <h1 class="what_taital">社区居委会成员</h1>
+        <p class="what_text_1"></p>
+        <div class="team_section_2 layout_padding">
+          <div class="row">
+            <div class="col-sm-3">
+              <img th:src="@{/images/user_p.png}" class="image_7">
+              <p class="readable_text">xxx</p>
+              <p class="readable_text_1">主任</p>
+<!--              <div class="social_icon">-->
+<!--                <ul>-->
+<!--                  <li><a href="#"><img src="images/fb-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/twitter-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/linkedin-icon.png"></a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+            </div>
+            <div class="col-sm-3">
+              <img th:src="@{/images/user_p.png}" class="image_7">
+              <p class="readable_text">xxx</p>
+              <p class="readable_text_1">副主任</p>
+<!--              <div class="social_icon">-->
+<!--                <ul>-->
+<!--                  <li><a href="#"><img src="images/fb-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/twitter-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/linkedin-icon.png"></a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+            </div>
+            <div class="col-sm-3">
+              <img th:src="@{/images/user_p.png}" class="image_7">
+              <p class="readable_text">xxx</p>
+              <p class="readable_text_1">联络员</p>
+<!--              <div class="social_icon">-->
+<!--                <ul>-->
+<!--                  <li><a href="#"><img src="images/fb-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/twitter-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/linkedin-icon.png"></a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+            </div>
+            <div class="col-sm-3">
+              <img th:src="@{/images/user_p.png}" class="image_7">
+              <p class="readable_text">xxx</p>
+              <p class="readable_text_1">办事处主任</p>
+<!--              <div class="social_icon">-->
+<!--                <ul>-->
+<!--                  <li><a href="#"><img src="images/fb-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/twitter-icon.png"></a></li>-->
+<!--                  <li><a href="#"><img src="images/linkedin-icon.png"></a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--team section end -->
+    <!--footer section start -->
+<!--    <div class="footer_section layout_padding">-->
+<!--      <div class="container">-->
+<!--        <div class="copyright_section">-->
+<!--          xxxxxxxxxx-->
+<!--        </div>-->
+<!--        &lt;!&ndash; copyright section end &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--footer section end -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- javascript --> 
+    <script src="js/owl.carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> 
+</body>
+</html>

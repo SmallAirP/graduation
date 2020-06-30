@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" question="IE=edge">
+    <meta name="viewport" question="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" question="width=device-width, initial-scale=1">
+    <meta name="viewport" question="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>About</title>
+    <meta name="keywords" question="">
+    <meta name="description" question="">
+    <meta name="author" question="">
+<!--输入框样式-->
+    <link rel="stylesheet" th:href="@{/forum/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/forum/css/sinaFaceAndEffec.css}" />
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Responsive-->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" th:href="@{/images/fevicon.png}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" th:href="@{/css/jquery.mCustomScrollbar.min.css}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" th:href="@{/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+<!--    answer style-->
+
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" th:href="@{forum/css/style.css}" id="theme-styles}">
+    <style type="text/css">
+        .comments{
+            margin-top:100px
+        }
+    </style>
+</head>
+<body>
+<!--header section start -->
+<div class="header_section header_bg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="logo">
+            <a href="index.html" th:href="@{/index.html}">
+                <img src="images/logo.png" th:src="@{/images/logo.png}">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index.html}">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/services.html}">服务</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/content}">社区论坛</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/team.html}">社区居委会成员</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact.html}">意见反馈</a>
+                </li>
+                <li class="nav-item" th:if="${session.isT} ne 'y'">
+                    <a class="nav-link" th:href="@{/login.html}" >登录/注册</a>
+                </li>
+                <li class="nav-item" th:if="${session.isT} eq 'y'">
+
+                    <!--                <span th:text="${session.loginuser}"></span>-->
+                    <!--                <span>欢迎你！</span>-->
+                    <!--                <a class="nav-link" href="#" th:href="@{/xx}" >退出登录</a>-->
+                    <a class="nav-link" href="#" th:href="@{/person.html}" >个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--header section end -->
+<!--about section start -->
+<div class="services_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="services_taital">欢迎讨论</h1>
+<!--                输入框-->
+                <div id="question" style="width: 700px; height: auto;">
+                    <div class="wrap">
+                        <div class="comment_t">
+<!--                            <div class="head-face">-->
+<!--                                <img src="images/1.jpg" />-->
+<!--                                <p>我是鸟</p>-->
+<!--                            </div>-->
+                            <div class="question">
+                                <form id="form_c" method="post" th:action="@{/content/addQuestion}">
+
+                                    <div class="cont-box">
+                                        <textarea class="text" placeholder="请输入..." onblur="getV()" id="txta"></textarea>
+                                    </div>
+                                    <input type="hidden" name="hid_content" id="hid"/>
+                                    <div class="tools-box">
+                                        <div class="operator-box-btn">
+<!--                                            <span class="face-icon">☺</span>-->
+                                        </div>
+                                        <div class="submit-btn">
+                                            <input type="button"  onClick="sub()" value="提交评论" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+<!--                        <div id="info-show">-->
+
+<!--                            -->
+<!--                            <ul>-->
+<!--                                <li th:each="contents:${#httpServletRequest.getAttribute('contents')}">-->
+<!--                                    <div>-->
+<!--                                        <h3>问题内容：</h3>-->
+<!--                                        <span th:text="${contents.question.content}"></span>-->
+<!--                                        <ul>-->
+<!--                                            <li th:each="answersList:${contents.answers}">-->
+<!--                                                <h3>回答</h3>-->
+<!--                                                <span th:text="${answersList.content}"></span>-->
+<!--                                            </li>-->
+<!--                                            <form th:action="@{/content/addAnswer}" method="post">-->
+<!--                                                <input type="text" name="answer_con">-->
+<!--                                                <input type="hidden" name="qid" th:value="${contents.question.id}">-->
+<!--                                                <input type="submit" value="提交">-->
+<!--                                            </form>-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+
+
+<!--&lt;!&ndash;                                    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <p class="username" th:text="content.">小小红色飞机</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="head-face">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <img src="images/1.jpg" />&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="reply-cont">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <p class="username">小小红色飞机</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <p class="comment-body">'+content+'</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+
+<!--                    ++++++++++++++++++    -->
+                        <div class="col-md-8 blog-main">
+
+
+                        <aside class="comments" id="comments" >
+                            <div th:each="contents:${#httpServletRequest.getAttribute('contents')}">
+                                <article class="comment" >
+                                    <header class="clearfix">
+<!--                                        头像-->
+                                        <img th:src="${contents.question_u.user.url}" alt="A Smart Guy" class="avatar">
+                                        <div class="meta">
+<!--                                            昵称-->
+                                            <h3 th:text="${contents.question_u.user.nickname}" class="pn"></h3>
+<!--                                            提交时间-->
+                                            <span class="date" th:text="${contents.question_u.question.time}">
+
+                                            </span>
+                                            <span class="separator">
+                                        </span>
+
+                                        </div>
+                                    </header>
+                                    <div class="body">
+<!--                                        问题内容-->
+                                        <span th:text="${contents.question_u.question.content}"></span>
+                                        <form action="/content/addAnswer" method="post" id="answerForm">
+                                            <input type="text" class="form-control" placeholder="回答问题" style="border:0.5px solid #378888" name="answer_con">
+                                            <input type="hidden" name="qid" th:value="${contents.question_u.question.id}">
+                                            <span class="input-group-btn">
+                                                <input type="submit" class="btn btn-success" value="提交" >
+                                            </span>
+                                        </form>
+                                    </div>
+                                </article>
+
+                                <article class="comment reply" th:each="answersList:${contents.answers_u}">
+                                    <header class="clearfix">
+                                        <!--                                        头像-->
+
+                                        <img th:src="${answersList.user.url}" alt="A Smart Guy" class="avatar">
+                                        <div class="meta">
+                                            <!--                                            昵称-->
+
+                                            <h3 th:text="${answersList.user.nickname}"></h3>
+<!--                                            时间-->
+                                            <span class="date" th:text="${answersList.answer.time}">
+                                            </span>
+                                            <span class="separator">
+                                        </span>
+
+                                        </div>
+                                    </header>
+                                    <div class="body">
+                                        <span th:text="${answersList.answer.content}"></span>
+
+                                    </div>
+                                </article>
+                            </div>
+
+                        </aside>
+                        </div>
+
+<!--                        ++++++++++++++-->
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-4">
+                <div><img src="images/img-1.png" class="image_1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--about section end -->
+<!--footer section start -->
+<!--    <div class="footer_section layout_padding">-->
+<!--      <div class="container">-->
+<!--        <div class="copyright_section">-->
+<!--          xxxxxxxxxx-->
+<!--        </div>-->
+<!--        &lt;!&ndash; copyright section end &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--footer section end -->
+
+
+<!-- Javascript files ==========================-->
+<script src="js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="js/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+<script src="js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="js/jquery-3.0.0.min.js" th:src="@{/js/jquery-3.0.0.min.js}"></script>
+<script src="js/plugin.js" th:src="@{/js/plugin.js}"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js" th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script src="js/custom.js" th:src="@{/js/custom.js}"></script>
+<!-- javascript -->
+<script src="js/owl.carousel.js" th:src="@{/js/owl.carousel.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<!--输入框样式-->
+<script type="text/javascript" th:src="@{/forum/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/forum/js/sinaFaceAndEffec.js}"></script>
+<!--回答样式-->
+<script type="text/javascript" th:src="@{/js/modernizer.js}"></script>
+
+
+<script type="text/javascript">
+
+				// 绑定表情
+				$('.face-icon').SinaEmotion($('.text'));
+				// 测试本地解析
+				function out() {
+					var inputText = $('.text').val();
+					$('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+				}
+
+				var html;
+				function reply(question){
+					html  = '<li>';
+					html += '<div class="head-face">';
+					html += '<img src="images/1.jpg" / >';
+					html += '</div>';
+					html += '<div class="reply-cont">';
+					html += '<p class="username">小小红色飞机</p>';
+					html += '<p class="comment-body">'+question+'</p>';
+					html += '<p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>';
+					html += '</div>';
+					html += '</li>';
+					return html;
+				}
+
+				function sub(){
+<!--				   $('#hid').val() = $('#txta').val();-->
+                    if($('#txta').val() == ''){
+                        alert('请输入内容！')
+                        return;
+                    }
+                    var hi = $('#txta').val();
+                    $("#hid").attr("value", hi);
+				   $('#form_c').submit();
+				}
+			</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>I-Community</title>
+
+<!--   原来的样式-->
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <!-- Responsive-->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- fevicon -->
+    <!--<link rel="icon" href="images/fevicon.png" type="image/gif" th:href="@{/images/fevicon.png}">-->
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" th:href="@{/css/jquery.mCustomScrollbar.min.css}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" th:href="@{/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+<!--new  style-->
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css" th:href="@{/css/chargecss/orionicons.css}">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet" th:href="@{/css/chargecss/style.default.css}">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css" th:href="@{/css/chargecss/custom.css}">
+</head>
+<body>
+<!--顶部公共板块-->
+    <div th:insert="index :: copy">
+
+    </div>
+
+<div class="what_we_do_section layout_padding">
+    <div class="container">
+        <h1 class="what_taital">选择月份</h1>
+        <!--        信息导航标签-->
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group" th:if="${#httpServletRequest.getAttribute('nowMonth')} >= 1">
+                <button type="button" class="btn btn-primary" th:onclick="window.location='/charge?month=1'">
+                    1月
+                </button>
+            </div>
+
+            <div class="btn-group" role="group" th:if="${#httpServletRequest.getAttribute('nowMonth')} >= 2">
+                <button type="button" class="btn btn-info" th:onclick="window.location='/charge?month=2'">
+                    2月
+                </button>
+            </div>
+
+            <div class="btn-group" role="group" th:if="${#httpServletRequest.getAttribute('nowMonth')} >= 3">
+                <button type="button" class="btn btn-warning" th:onclick="window.location='/charge?month=3'">
+                    3月
+                </button>
+            </div>
+            <div class="btn-group" role="group" th:if="${#httpServletRequest.getAttribute('nowMonth')} >= 4">
+                <button type="button" class="btn btn-danger" th:onclick="window.location='/charge?month=4'" >
+                    4月
+                    <!--                    <a th:href="@{/xx}" style="text-decoration:none;">退出登录</a>-->
+                </button>
+            </div>
+            <div class="btn-group" role="group" th:if="${#httpServletRequest.getAttribute('nowMonth')} >= 5">
+                <button type="button" class="btn btn-success" th:onclick="window.location='/charge?month=5'" >
+                    5月
+                    <!--                    <a th:href="@{/xx}" style="text-decoration:none;">退出登录</a>-->
+                </button>
+            </div>
+
+            <div class="btn-group" role="group" th:if="${#httpServletRequest.getAttribute('nowMonth')} >= 6">
+                <button type="button" class="btn btn-primary" th:onclick="window.location='/charge?month=6'" >
+                    6月
+                </button>
+            </div>
+<!--            <div class="btn-group" role="group">-->
+<!--                <button type="button" class="btn btn-primary" th:onclick="window.location='/person.html'">-->
+<!--                    五月-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="btn-group" role="group">-->
+<!--                <button type="button" class="btn btn-info" th:onclick="window.location='/person_ph.html'">-->
+<!--                    六月-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="btn-group" role="group">-->
+<!--                <button type="button" class="btn btn-warning" th:onclick="window.location='/person_password.html'">-->
+<!--                    七月-->
+<!--                </button>-->
+<!--            </div>-->
+        </div>
+
+        <p class="what_text" th:if="${#httpServletRequest.getAttribute('month')} eq '0'">请选择月份</p>
+        <p class="what_text" th:if="${#httpServletRequest.getAttribute('month')} ne '0'" th:text="${#httpServletRequest.getAttribute('month')}+'月份物管费情况'"></p>
+
+        <div class="what_we_do_section_2" th:if="${#httpServletRequest.getAttribute('month')} ne '0'">
+            <div class="container-fluid px-xl-5">
+                <section class="py-5">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="text-uppercase mb-0">
+                                        <span th:text="${#httpServletRequest.getAttribute('house').unit}"></span>单元
+                                        <span th:text="${#httpServletRequest.getAttribute('house').floor}"></span>楼
+                                        <span th:text="${#httpServletRequest.getAttribute('house').number}"></span>号
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <td>
+                                                房屋所有人
+                                            </td>
+                                            <td th:text="${session.loginuser.nickname}">
+
+                                            </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>面积</td>
+                                            <td>
+                                                <span th:text="${#httpServletRequest.getAttribute('house').area}"></span>㎡
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>物管费单价</td>
+                                            <td>
+                                                <span th:text="${#httpServletRequest.getAttribute('price')}"></span>
+                                                元/㎡
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>合计</td>
+                                            <td>
+                                                <span  th:text="${#httpServletRequest.getAttribute('house').area} * ${#httpServletRequest.getAttribute('price')}"></span>元
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>
+
+                                            </td>
+
+                                            <td th:if="${#httpServletRequest.getAttribute('isG')} eq '0'">
+
+                                                <form th:action="@{/pay}" method="post" onsubmit="pay()">
+
+                                                    <input type="hidden" th:value="${#httpServletRequest.getAttribute('house').id}" name="hid"/>
+                                                    <input type="hidden" th:value="${#httpServletRequest.getAttribute('house').area} * 2.50" name="charge"/>
+                                                    <input type="hidden" th:value="${#httpServletRequest.getAttribute('month')}" name="month"/>
+
+
+                                                    <input type="submit" class="btn btn-success"  value="缴费"/>
+
+                                                </form>
+                                            </td>
+                                            <td th:if="${#httpServletRequest.getAttribute('isG')} ne '0'">
+                                                <button type="button" class="btn warning" onclick="a()">已缴费</button>
+                                            </td>
+
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--  one-->
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <script src="js/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+    <script src="js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script src="js/jquery-3.0.0.min.js" th:src="@{/js/jquery-3.0.0.min.js}"></script>
+    <script src="js/plugin.js" th:src="@{/js/plugin.js}"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js" th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+    <script src="js/custom.js" th:src="@{/js/custom.js}"></script>
+    <!-- javascript -->
+    <script src="js/owl.carousel.js" th:src="@{/js/owl.carousel.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+<script>
+    function down(){
+        var url = "http://192.168.1.101:9090"
+        var request = new XMLHttpRequest();
+        request.open("POST", url);
+        request.send("F")
+    }
+    function a(){
+        alert("你已缴费！");
+
+    }
+</script>
+</html>

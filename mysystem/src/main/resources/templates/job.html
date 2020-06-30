@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" question="IE=edge">
+    <meta name="viewport" question="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" question="width=device-width, initial-scale=1">
+    <meta name="viewport" question="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Services</title>
+    <meta name="keywords" question="">
+    <meta name="description" question="">
+    <meta name="author" question="">
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <!-- Responsive-->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" th:href="@{/images/fevicon.png}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" th:href="@{/css/jquery.mCustomScrollbar.min.css}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" th:href="@{/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body>
+<!--header section start -->
+<div class="header_section header_bg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="logo">
+            <a href="index.html" th:href="@{/index.html}">
+                <img src="images/logo.png" th:src="@{/images/logo.png}">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index.html}">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/services.html}">服务</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/content}">社区论坛</a>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/team.html}">社区居委会成员</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contact.html}">意见反馈</a>
+                </li>
+                <li class="nav-item" th:if="${session.isT} ne 'y'">
+                    <a class="nav-link" th:href="@{/login.html}" >登录/注册</a>
+                </li>
+                <li class="nav-item" th:if="${session.isT} eq 'y'">
+
+                    <!--                <span th:text="${session.loginuser}"></span>-->
+                    <!--                <span>欢迎你！</span>-->
+                    <!--                <a class="nav-link" href="#" th:href="@{/xx}" >退出登录</a>-->
+                    <a class="nav-link" href="#" th:href="@{/person.html}" >个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--header section end -->
+<!--services section start -->
+<div class="what_we_do_section layout_padding">
+    <div class="container">
+        <h1 class="what_taital">招聘岗位</h1>
+        <p class="what_text">社区现有以下用人需求 </p>
+        <div class="what_we_do_section_2">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <td>编号</td>
+                        <td>岗位名称</td>
+                        <td>详情介绍</td>
+                        <td>工资</td>
+                        <td>剩余需求数量</td>
+                        <td>操作</td>
+                    </thead>
+
+                    <tr th:each="jobs:${#httpServletRequest.getAttribute('jobs')}">
+
+                        <form method="post" th:action="@{/toEmploy}" onsubmit="sub()">
+                            <td th:text="${jobsStat.index+1}"></td>
+                            <td th:text="${jobs.jobName}">楼道卫生保洁员</td>
+                            <td th:text="${jobs.details}">打扫楼道</td>
+                            <td th:text="${jobs.salary}">2500</td>
+                            <td th:text="${jobs.number}">10</td>
+                            <input type="hidden" th:value="${jobs.jobId}" name="jId">
+
+                            <td>
+<!--                                <button class="btn btn-success" th:onclick="window.location='/xx'">应聘</button>-->
+                                <input type="submit" value="应聘" class="btn btn-success">
+
+                            </td>
+                        </form>
+                    </tr>
+
+                </table>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">我是标题</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!--services section end -->
+<!--footer section start -->
+<!--    <div class="footer_section layout_padding">-->
+<!--      <div class="container">-->
+<!--        <div class="copyright_section">-->
+<!--          xxxxxxxxxx-->
+<!--        </div>-->
+<!--        &lt;!&ndash; copyright section end &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--footer section end -->
+<!-- Javascript files-->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/plugin.js"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<!-- javascript -->
+<script src="js/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script>
+
+    function sub(){
+        alert('提交请求成功');
+    }
+</script>
+</body>
+</html>
